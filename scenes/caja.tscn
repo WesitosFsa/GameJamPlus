@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1ts8ew3kqmc6"]
+
+[ext_resource type="Script" uid="uid://d2th1viv65kev" path="res://scripts/caja.gd" id="1_g2cyc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc2kr"]
+albedo_color = Color(1.9720821, 0.29776347, 1.355228, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g2cyc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hmpi"]
+
+[node name="Caja" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["interactable"]]
+script = ExtResource("1_g2cyc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_pc2kr")
+mesh = SubResource("BoxMesh_g2cyc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_3hmpi")

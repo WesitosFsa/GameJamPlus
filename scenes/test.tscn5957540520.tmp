@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq71ivqs05t3o"]
+[gd_scene load_steps=13 format=3 uid="uid://dq71ivqs05t3o"]
 
 [ext_resource type="PackedScene" uid="uid://wmkiysp8iv7m" path="res://scenes/player.tscn" id="1_errlg"]
 [ext_resource type="Script" uid="uid://xg3263gbw2re" path="res://scripts/box.gd" id="2_bl13t"]
@@ -20,9 +20,6 @@ radius = 3.0
 albedo_color = Color(0.99999994, 0.10205936, 0.49233556, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_iyx0m"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74lek"]
-albedo_color = Color(0.08627451, 0.5921569, 0.58431375, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_iyx0m"]
 
@@ -72,10 +69,8 @@ stream = ExtResource("3_iyx0m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7309723, -4.7704415)
 visible = false
 script = ExtResource("4_74lek")
-velocidad = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="dog"]
-material_override = SubResource("StandardMaterial3D_74lek")
 mesh = SubResource("SphereMesh_iyx0m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dog"]

@@ -1,3 +1,4 @@
+class_name ControlHint
 extends CenterContainer
 
 func add_hint(_keyLabel : String, _action_label : String):

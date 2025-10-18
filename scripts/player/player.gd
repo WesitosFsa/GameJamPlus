@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 #
 @onready var Pivote = $Pivot
@@ -13,8 +14,8 @@ var is_jumping : bool = false
 var on_debug := false
 
 #MOVE
-var max_speed = 2
-var sprint_speed = 2.5
+var max_speed = 1.0
+var sprint_speed = 1.5
 var acceleration = 0.5
 var desaceleration = 0.5
 var can_footstep : bool = true

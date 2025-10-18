@@ -12,7 +12,7 @@ func _process(_delta):
 	check_if_looking()
 
 func interact():
-	var interaction_ray = MouseRayCast.calc_3D_interactions(interact_layer, 3)
+	var interaction_ray = MouseRayCast.calc_3D_interactions(interact_layer, 20)
 	if interaction_ray:
 		var collider = interaction_ray.collider
 		if collider.is_in_group("interactable") and can_interact:
@@ -26,11 +26,10 @@ func interact():
 		leave_interaction()
 
 func leave_interaction():
-	pass
-	#if current_object != null and current_object is fully_interactable:
-	#	current_object.on_mouse_exited()
-	#current_object = null
-	#already_interacted = false
+	if current_object != null and current_object is fully_interactable:
+		current_object.on_mouse_exited()
+	current_object = null
+	already_interacted = false
 
 func check_if_looking():
 	var interaction_ray = MouseRayCast.calc_3D_interactions(0b011, 20)

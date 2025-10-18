@@ -1,46 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://kqds4ncfocip"]
+[gd_scene load_steps=6 format=3 uid="uid://jobtjotbc5e3"]
 
-[ext_resource type="Script" uid="uid://dslbytmhas8qu" path="res://scripts/perro.gd" id="1_445j2"]
-[ext_resource type="Script" uid="uid://h35biian16u4" path="res://scripts/dog_detection.gd" id="3_eru8m"]
+[ext_resource type="Script" uid="uid://cpi0qse3yqgxy" path="res://scripts/perro_sector.gd" id="1_0oa0i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x0xbu"]
+size = Vector3(1, 0.7607422, 0.2814331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qr1p"]
+size = Vector3(1, 0.8878174, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l20p6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0nem"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x0xbu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7qr1p"]
-
-[node name="PerroSector" type="Node3D"]
+[node name="dog_sector" type="Node3D"]
+script = ExtResource("1_0oa0i")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.024725, 1.1343305, -1.045042)
 
-[node name="Perro" type="CharacterBody3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3.19, 0, 0, 0, 3.19, 0, 0, 0, 3.19, 0, 0, 0.052667618)
+shape = SubResource("BoxShape3D_x0xbu")
+debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
+
+[node name="Pared" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.115, 0, -0.65)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared"]
+transform = Transform3D(2.195, 0, 0, 0, 2.59, 0, 0, 0, 0.47, 0.5337987, 1.1772277, 0.13862038)
+shape = SubResource("BoxShape3D_7qr1p")
+debug_color = Color(0.96706814, 0, 0.4795934, 0.41960785)
+
+[node name="Perro" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.46, 0, 0, 0, 0.46, 0, 0, 0, 0.46, -0.7248316, 0.38194442, 0)
-script = ExtResource("1_445j2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/Perro"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Perro"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.545, 0.382, -0.26)
 mesh = SubResource("CapsuleMesh_l20p6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/Perro"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Perro"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_b0nem")
 
-[node name="Ladrido" type="AudioStreamPlayer3D" parent="Area3D/Perro"]
+[node name="Ladrido" type="AudioStreamPlayer3D" parent="Perro"]
 transform = Transform3D(2.173913, 0, 0, 0, 2.173913, 0, 0, 0, 2.173913, 0, 0, 0)
-volume_db = 10.972
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(3.19, 0, 0, 0, 3.19, 0, 0, 0, 3.19, 1.12, 0, 0)
-shape = SubResource("BoxShape3D_x0xbu")
-script = ExtResource("3_eru8m")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.115, 0, -0.65)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(2.195, 0, 0, 0, 2.59, 0, 0, 0, 0.47, 0, 0, 0)
-shape = SubResource("BoxShape3D_7qr1p")
-
-[connection signal="body_entered" from="Area3D" to="Area3D/CollisionShape3D" method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

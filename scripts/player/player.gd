@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var Camera = $Pivot/Camera3D
 @onready var MouseRayCast = $Pivot/Camera3D/MouseRayCast
 @onready var PlayerSpotLight : SpotLight3D = $"../PlayerSpotLight3D"
+@onready var initial_position: Vector3 = global_position
 
 #FLAGS
 var can_move : bool = true
@@ -159,3 +160,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if(body.is_in_group("player")):
 		$"../AudioStreamPlayer3D".play()
 		$"../Area3D".queue_free()
+
+
+func respawn() -> void:
+	global_position = initial_position
+	velocity = Vector3.ZERO

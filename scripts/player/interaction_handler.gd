@@ -17,7 +17,6 @@ func interact():
 		var collider = interaction_ray.collider
 		if collider.is_in_group("interactable") and can_interact:
 				collider.mouse_interaction()
-				Cursor.increse_cursor()
 				if current_object != collider: leave_interaction() #In case we see at other collider
 				current_object = collider
 				already_interacted = true

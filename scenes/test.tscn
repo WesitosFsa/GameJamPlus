@@ -1,12 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq71ivqs05t3o"]
+[gd_scene load_steps=8 format=3 uid="uid://dq71ivqs05t3o"]
 
 [ext_resource type="PackedScene" uid="uid://wmkiysp8iv7m" path="res://scenes/player.tscn" id="1_errlg"]
+[ext_resource type="Script" uid="uid://xg3263gbw2re" path="res://scripts/box.gd" id="2_bl13t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ij1v8"]
 size = Vector3(20, 0.5, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ij1v8"]
 size = Vector3(20, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_errlg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl13t"]
+albedo_color = Color(0.99999994, 0.10205936, 0.49233556, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iyx0m"]
 
 [node name="TEST" type="Node3D"]
 
@@ -27,3 +35,14 @@ shadow_enabled = true
 spot_range = 30.0
 spot_angle = 22.49
 spot_angle_attenuation = 9.84
+
+[node name="Box" type="StaticBody3D" parent="." groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9579748, -2.8378587)
+script = ExtResource("2_bl13t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
+shape = SubResource("BoxShape3D_errlg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
+material_override = SubResource("StandardMaterial3D_bl13t")
+mesh = SubResource("BoxMesh_iyx0m")

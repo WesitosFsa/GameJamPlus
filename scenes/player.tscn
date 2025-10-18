@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wmkiysp8iv7m"]
+[gd_scene load_steps=19 format=3 uid="uid://wmkiysp8iv7m"]
 
 [ext_resource type="Script" uid="uid://bn6v4om706bah" path="res://scripts/player/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dxyjryo76ydaf" path="res://scripts/player/pivot.gd" id="2_g2els"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bx6viw74gm2ll" path="res://assets/audio/footsteps/NoPiedra1.mp3" id="10_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://be5dkcy8q3430" path="res://assets/audio/footsteps/NoPiedra2.mp3" id="11_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bk3fk3ugl8hlf" path="res://assets/audio/footsteps/NoPiedra3.mp3" id="12_f1ej7"]
+[ext_resource type="Shader" uid="uid://chs8a247xfy6l" path="res://shaders/drunk.gdshader" id="13_jej6c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.2
@@ -38,6 +39,14 @@ stream_2/weight = 0.5
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3v2ag"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1ej7"]
+shader = ExtResource("13_jej6c")
+shader_parameter/wave_amplitude = 0.015
+shader_parameter/wave_frequency = 6.0
+shader_parameter/wave_speed = 2.0
+shader_parameter/static_intensity = 0.15
+shader_parameter/static_speed = 4.0
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8527156, 0)
 script = ExtResource("1_3vyb7")
@@ -47,7 +56,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("2_g2els")
 
 [node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 3.7191047e-08, 8.305349e-09, -3.719105e-08, 0.9049978, 0.425416, 8.305349e-09, -0.425416, 0.9049978, 0, 0, 0)
 script = ExtResource("3_qlg0r")
+drunk_frequency = 5.0
+drunk_intensity = 0.2
 
 [node name="MouseRayCast" type="Node3D" parent="Pivot/Camera3D"]
 script = ExtResource("3_dqkch")
@@ -89,5 +101,12 @@ unique_name_in_owner = true
 
 [node name="LayerAudioPlayer" type="AudioStreamPlayer3D" parent="." groups=["layer_audio_player"]]
 stream = SubResource("AudioStreamInteractive_3v2ag")
+
+[node name="Drunk" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_f1ej7")
+offset_left = -5261.0
+offset_top = -3396.0
+offset_right = 7739.0
+offset_bottom = 5395.0
 
 [connection signal="timeout" from="FootstepsTimer" to="." method="_on_footsteps_timer_timeout"]

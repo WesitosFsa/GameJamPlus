@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bx6viw74gm2ll" path="res://assets/audio/footsteps/NoPiedra1.mp3" id="10_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://be5dkcy8q3430" path="res://assets/audio/footsteps/NoPiedra2.mp3" id="11_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bk3fk3ugl8hlf" path="res://assets/audio/footsteps/NoPiedra3.mp3" id="12_f1ej7"]
-[ext_resource type="Shader" uid="uid://chs8a247xfy6l" path="res://shaders/drunk.gdshader" id="13_jej6c"]
+[ext_resource type="Shader" uid="uid://b5rlj4mv163tq" path="res://shaders/drunk.gdshader" id="13_jej6c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.2
@@ -41,11 +41,11 @@ stream_2/weight = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1ej7"]
 shader = ExtResource("13_jej6c")
-shader_parameter/wave_amplitude = 0.015
+shader_parameter/wave_amplitude = 0.02000000095
 shader_parameter/wave_frequency = 6.0
-shader_parameter/wave_speed = 2.0
-shader_parameter/static_intensity = 0.15
-shader_parameter/static_speed = 4.0
+shader_parameter/wave_speed = 0.050000002375
+shader_parameter/static_intensity = 0.050000002375
+shader_parameter/static_speed = 0.070000003325
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8527156, 0)

@@ -25,6 +25,8 @@ window/size/mode=2
 [global_group]
 
 layer_audio_player=""
+control_hint=""
+interactable=""
 
 [input]
 

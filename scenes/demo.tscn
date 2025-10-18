@@ -9,7 +9,7 @@
 [node name="mapa_blueprint_001" parent="." instance=ExtResource("1_ba4lm")]
 
 [node name="Player" parent="." instance=ExtResource("2_l20p6")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.5, 1, -6.5)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.41565, 1, -7.077804)
 
 [node name="PlayerSpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6482415, -25.03391)

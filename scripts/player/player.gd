@@ -137,26 +137,10 @@ func get_input():
 
 func play_footsteps():
 	if can_footstep:
-		var sound : String
-		var creaking : String
-		if $CheckFloorMaterialRay.get_collider() != null:
-			if $CheckFloorMaterialRay.get_collider().is_in_group("wood"):
-				$FootstepsPlayer.bus = "HighReverb"
-				sound = "res://assets/audio/fx/footsteps/wood/" + str(randi() % 3 + 1) + ".mp3"
-				creaking = "res://assets/audio/fx/footsteps/wood/c" + str(randi() % 3 + 1) + ".mp3"
-				if((randi() % 10 + 1) == 3):
-					$"FootstepsPlayer(creaking)".stream = load(creaking)
-					$"FootstepsPlayer(creaking)".play()
-			elif $CheckFloorMaterialRay.get_collider().is_in_group("grass"):
-				$FootstepsPlayer.bus = "Master"
-				sound = "res://assets/audio/fx/footsteps/grass/1.mp3"
-				$FootstepsPlayer.pitch_scale = randf_range(0.7, 1)
-			else:
-				return
+		if randi_range(0, 3) == 0:
+			$FootstepsPlayerPiedra.play()
 		else:
-			return
-		$FootstepsPlayer.stream = load(sound)
-		$FootstepsPlayer.play()
+			$FootstepsPlayer.play()
 		can_footstep = false
 		$FootstepsTimer.start()
 

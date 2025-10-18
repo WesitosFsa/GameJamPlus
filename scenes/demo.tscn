@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2e18teopms3a"]
+
+[ext_resource type="PackedScene" uid="uid://7p4qpgmi57a3" path="res://assets/scenery/mapa_blueprint_001.blend" id="1_ba4lm"]
+[ext_resource type="PackedScene" uid="uid://wmkiysp8iv7m" path="res://scenes/player.tscn" id="2_l20p6"]
+[ext_resource type="Environment" uid="uid://d2d3l0vow2ymb" path="res://enviroments/house_final.tres" id="3_l20p6"]
+
+[node name="Demo" type="Node3D"]
+
+[node name="mapa_blueprint_001" parent="." instance=ExtResource("1_ba4lm")]
+
+[node name="Player" parent="." instance=ExtResource("2_l20p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.678866, 2.036538, -6.539074)
+
+[node name="PlayerSpotLight3D" type="SpotLight3D" parent="."]
+light_energy = 1.3
+shadow_enabled = true
+spot_range = 30.0
+spot_angle = 22.49
+spot_angle_attenuation = 9.84
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_l20p6")
+
+[editable path="mapa_blueprint_001"]

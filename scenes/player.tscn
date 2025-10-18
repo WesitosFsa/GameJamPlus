@@ -1,14 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://wmkiysp8iv7m"]
+[gd_scene load_steps=17 format=3 uid="uid://wmkiysp8iv7m"]
 
 [ext_resource type="Script" uid="uid://bn6v4om706bah" path="res://scripts/player/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dxyjryo76ydaf" path="res://scripts/player/pivot.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://v5yco4th2db3" path="res://scripts/player/mouse_ray_cast.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://bylygc04apr34" path="res://scripts/player/interaction_handler.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://du2cmouich2u" path="res://scripts/player/camera_3d.gd" id="3_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://dkypnqbslngch" path="res://assets/audio/footsteps/pisada1.mp3" id="6_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://dl8n8i71xoqpy" path="res://assets/audio/footsteps/pisada2.mp3" id="7_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://dgpswuwgr41xc" path="res://assets/audio/footsteps/pisada3.mp3" id="8_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://c8dsf2qatxhe1" path="res://assets/audio/footsteps/pisada4.mp3" id="9_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://bx6viw74gm2ll" path="res://assets/audio/footsteps/NoPiedra1.mp3" id="10_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://be5dkcy8q3430" path="res://assets/audio/footsteps/NoPiedra2.mp3" id="11_jej6c"]
+[ext_resource type="AudioStream" uid="uid://bk3fk3ugl8hlf" path="res://assets/audio/footsteps/NoPiedra3.mp3" id="12_f1ej7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.2
 height = 1.7
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oprun"]
+random_pitch = 1.2
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("6_ur7pv")
+stream_1/stream = ExtResource("7_y4r1p")
+stream_2/stream = ExtResource("8_d2wvv")
+stream_3/stream = ExtResource("9_3v2ag")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qlg0r"]
+playback_mode = 2
+random_pitch = 1.2
+random_volume_offset_db = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("10_3v2ag")
+stream_1/stream = ExtResource("11_jej6c")
+stream_2/stream = ExtResource("12_f1ej7")
+stream_2/weight = 0.5
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3v2ag"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8527156, 0)
@@ -25,8 +53,10 @@ script = ExtResource("3_qlg0r")
 script = ExtResource("3_dqkch")
 
 [node name="LeftBackAudio" type="AudioStreamPlayer3D" parent="Pivot/Camera3D" groups=["right_back_audio_player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26405835, 0, 0.17347094)
 
 [node name="RightBackAudio" type="AudioStreamPlayer3D" parent="Pivot/Camera3D" groups=["right_back_audio_player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.264, 0, 0.173)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u8vuu")
@@ -37,7 +67,15 @@ MouseRayCast = NodePath("../Pivot/Camera3D/MouseRayCast")
 
 [node name="FootstepsTimer" type="Timer" parent="."]
 
+[node name="FootstepsPlayerPiedra" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80689895, 0)
+stream = SubResource("AudioStreamRandomizer_oprun")
+max_db = -3.0
+
 [node name="FootstepsPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.80689895, 0)
+stream = SubResource("AudioStreamRandomizer_qlg0r")
+max_db = -3.0
 
 [node name="CheckFloorMaterialRay" type="RayCast3D" parent="."]
 
@@ -46,5 +84,10 @@ unique_name_in_owner = true
 
 [node name="StairsBelowRaycast" type="RayCast3D" parent="."]
 unique_name_in_owner = true
+
+[node name="Voz" type="AudioStreamPlayer3D" parent="."]
+
+[node name="LayerAudioPlayer" type="AudioStreamPlayer3D" parent="." groups=["layer_audio_player"]]
+stream = SubResource("AudioStreamInteractive_3v2ag")
 
 [connection signal="timeout" from="FootstepsTimer" to="." method="_on_footsteps_timer_timeout"]

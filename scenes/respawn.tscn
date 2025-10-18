@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://betbjggqsxjld"]
+
+[ext_resource type="Script" uid="uid://b0ljb4ukd6n3j" path="res://scripts/respawn.gd" id="1_grv7o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l20p6"]
+
+[node name="Respawn" type="Node3D"]
+script = ExtResource("1_grv7o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_l20p6")
+debug_color = Color(0.96862745, 0, 0, 0.41960785)

@@ -908,7 +908,7 @@ shape = SubResource("BoxShape3D_ij1v8")
 mesh = SubResource("BoxMesh_ij1v8")
 
 [node name="Player" parent="." instance=ExtResource("1_errlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3564858, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8087873, -2.5855842)
 
 [node name="PlayerSpotLight3D" type="SpotLight3D" parent="."]
 light_energy = 1.3
@@ -1053,6 +1053,7 @@ skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8248284, -4.363534)
+visible = false
 light_energy = 2.0
 shadow_enabled = true
 shadow_opacity = 0.27

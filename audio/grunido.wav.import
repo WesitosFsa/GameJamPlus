@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://01ukuib4vm4e"
-path="res://.godot/imported/audiotest.wav-abfd9d45af8361deb2f5fa5a9b94e879.sample"
+uid="uid://buti178t6takk"
+path="res://.godot/imported/grunido.wav-3ed2f900c6c85c68a4c323d25de81e7e.sample"
 
 [deps]
 
-source_file="res://audios/audiotest.wav"
-dest_files=["res://.godot/imported/audiotest.wav-abfd9d45af8361deb2f5fa5a9b94e879.sample"]
+source_file="res://audio/grunido.wav"
+dest_files=["res://.godot/imported/grunido.wav-3ed2f900c6c85c68a4c323d25de81e7e.sample"]
 
 [params]
 

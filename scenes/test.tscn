@@ -1,8 +1,8 @@
 [gd_scene load_steps=64 format=4 uid="uid://dq71ivqs05t3o"]
 
 [ext_resource type="PackedScene" uid="uid://wmkiysp8iv7m" path="res://scenes/player.tscn" id="1_errlg"]
+[ext_resource type="Environment" uid="uid://d2d3l0vow2ymb" path="res://enviroments/house_final.tres" id="2_iyx0m"]
 [ext_resource type="Texture2D" uid="uid://cqpfkjivtsuso" path="res://assets/scenery/textures/Textura.png" id="3_74lek"]
-[ext_resource type="Environment" uid="uid://4s3xjv2nos8s" path="res://enviroments/house_demo.tres" id="3_iyx0m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ij1v8"]
 size = Vector3(20, 0.5, 20)
@@ -918,7 +918,7 @@ spot_angle = 22.49
 spot_angle_attenuation = 9.84
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("3_iyx0m")
+environment = ExtResource("2_iyx0m")
 
 [node name="Casa tex" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, -5)
@@ -1052,8 +1052,7 @@ mesh = SubResource("ArrayMesh_nyun7")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8248284, -4.363534)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8248284, -1.3185128)
 light_energy = 2.0
 shadow_enabled = true
 shadow_opacity = 0.27

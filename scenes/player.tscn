@@ -1,11 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://wmkiysp8iv7m"]
+[gd_scene load_steps=35 format=3 uid="uid://wmkiysp8iv7m"]
 
 [ext_resource type="Script" uid="uid://bn6v4om706bah" path="res://scripts/player/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dxyjryo76ydaf" path="res://scripts/player/pivot.gd" id="2_g2els"]
 [ext_resource type="Script" uid="uid://v5yco4th2db3" path="res://scripts/player/mouse_ray_cast.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://bylygc04apr34" path="res://scripts/player/interaction_handler.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://du2cmouich2u" path="res://scripts/player/camera_3d.gd" id="3_qlg0r"]
+[ext_resource type="Script" uid="uid://dk373i3iums6c" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="4_i4ail"]
+[ext_resource type="Script" uid="uid://dy13k30xpnatt" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="5_a38lo"]
+[ext_resource type="Script" uid="uid://bx4c81ews2k13" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="6_4ni07"]
 [ext_resource type="AudioStream" uid="uid://dkypnqbslngch" path="res://assets/audio/footsteps/pisada1.mp3" id="6_ur7pv"]
+[ext_resource type="Script" uid="uid://b6amqofsubqm2" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="7_l71n6"]
 [ext_resource type="AudioStream" uid="uid://dl8n8i71xoqpy" path="res://assets/audio/footsteps/pisada2.mp3" id="7_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://dgpswuwgr41xc" path="res://assets/audio/footsteps/pisada3.mp3" id="8_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://c8dsf2qatxhe1" path="res://assets/audio/footsteps/pisada4.mp3" id="9_3v2ag"]
@@ -13,7 +17,24 @@
 [ext_resource type="AudioStream" uid="uid://be5dkcy8q3430" path="res://assets/audio/footsteps/NoPiedra2.mp3" id="11_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bk3fk3ugl8hlf" path="res://assets/audio/footsteps/NoPiedra3.mp3" id="12_f1ej7"]
 [ext_resource type="Shader" uid="uid://b5rlj4mv163tq" path="res://shaders/drunk.gdshader" id="13_jej6c"]
+[ext_resource type="AudioStream" uid="uid://byryj60mmoav4" path="res://assets/audio/Acuchillar.mp3" id="13_oprun"]
 [ext_resource type="Script" uid="uid://c0oqrebl073af" path="res://scripts/hint.tres.gd" id="14_f1ej7"]
+[ext_resource type="Script" uid="uid://cp7shmpkhmed4" path="res://scripts/ladder_animator.gd" id="15_qfm1y"]
+[ext_resource type="Shader" uid="uid://cdfto5l4r871g" path="res://shaders/blur.gdshader" id="16_a8ls1"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_f1ej7"]
+frustum_focal_length = 12.0
+
+[sub_resource type="Resource" id="Resource_a38lo"]
+script = ExtResource("6_4ni07")
+frequency = Vector3(0.3, 0.3, 0.3)
+amplitude = Vector3(0.02, 0.02, 0.04)
+metadata/_custom_type_script = "uid://bx4c81ews2k13"
+
+[sub_resource type="Resource" id="Resource_ujl30"]
+script = ExtResource("7_l71n6")
+RotationShake = Array[ExtResource("5_a38lo")]([SubResource("Resource_a38lo")])
+metadata/_custom_type_script = "uid://b6amqofsubqm2"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.2
@@ -38,7 +59,50 @@ stream_1/stream = ExtResource("11_jej6c")
 stream_2/stream = ExtResource("12_f1ej7")
 stream_2/weight = 0.5
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3v2ag"]
+[sub_resource type="Animation" id="Animation_fulsm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../VFX/Eyelids/VBoxContainer:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2000]
+}
+
+[sub_resource type="Animation" id="Animation_qfm1y"]
+resource_name = "ladder"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../VFX/Eyelids/VBoxContainer:theme_override_constants/separation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.7, 2.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2000, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4r5pv"]
+_data = {
+&"RESET": SubResource("Animation_fulsm"),
+&"ladder": SubResource("Animation_qfm1y")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4ail"]
+albedo_color = Color(0.12050886, 0, 0.70700896, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i4ail"]
+radius = 0.007
+radial_segments = 4
+rings = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1ej7"]
 shader = ExtResource("13_jej6c")
@@ -48,8 +112,12 @@ shader_parameter/wave_speed = 0.050000002375
 shader_parameter/static_intensity = 0.050000002375
 shader_parameter/static_speed = 0.070000003325
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfm1y"]
+shader = ExtResource("16_a8ls1")
+shader_parameter/offset = 0.0
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8527156, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371138e-08, 0.9999998, 0, -0.9999998, -4.371138e-08, 0, 0.8527156, 0)
 script = ExtResource("1_3vyb7")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -57,10 +125,19 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("2_g2els")
 
 [node name="Camera3D" type="Camera3D" parent="Pivot" groups=["camera"]]
-transform = Transform3D(1, 3.7191047e-08, 8.305349e-09, -3.719105e-08, 0.9049978, 0.425416, 8.305349e-09, -0.425416, 0.9049978, 0, 0, 0)
+transform = Transform3D(1, 4.5448533e-07, 0, -4.1130818e-07, 0.90499735, 0.4254167, 1.9334573e-07, -0.4254167, 0.90499735, 0, 0, 0)
+attributes = SubResource("CameraAttributesPhysical_f1ej7")
 script = ExtResource("3_qlg0r")
-drunk_frequency = 5.0
-drunk_intensity = 0.2
+
+[node name="DrunkShaker" type="Node3D" parent="Pivot/Camera3D" node_paths=PackedStringArray("Targets")]
+transform = Transform3D(1, -3.7191036e-08, 8.305371e-09, 3.7191043e-08, 0.90499777, -0.4254159, 8.305342e-09, 0.42541593, 0.90499777, 0, 0, 0)
+script = ExtResource("4_i4ail")
+custom_target = true
+Targets = [NodePath("..")]
+randomize = true
+AutoPlay = true
+shakerPreset = SubResource("Resource_ujl30")
+metadata/_custom_type_script = "uid://dk373i3iums6c"
 
 [node name="MouseRayCast" type="Node3D" parent="Pivot/Camera3D"]
 script = ExtResource("3_dqkch")
@@ -99,16 +176,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Voz" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_oprun")
 
 [node name="LayerAudioPlayer" type="AudioStreamPlayer3D" parent="." groups=["layer_audio_player"]]
-stream = SubResource("AudioStreamInteractive_3v2ag")
-
-[node name="Drunk" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_f1ej7")
-offset_left = -5261.0
-offset_top = -3396.0
-offset_right = 7739.0
-offset_bottom = 5395.0
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -127,4 +197,75 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_f1ej7")
 
+[node name="LadderAnimator" type="Node" parent="." groups=["ladder_animator"]]
+script = ExtResource("15_qfm1y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LadderAnimator"]
+libraries = {
+&"": SubResource("AnimationLibrary_4r5pv")
+}
+
+[node name="Timer" type="Timer" parent="LadderAnimator"]
+wait_time = 3.0
+one_shot = true
+
+[node name="GPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 15.861253, 1.9999996)
+material_override = SubResource("StandardMaterial3D_i4ail")
+amount = 500
+draw_order = 2
+mesh = SubResource("CapsuleMesh_i4ail")
+emission_shape = 3
+emission_box_extents = Vector3(20, 20, 20)
+gravity = Vector3(0, -78.4, 0)
+
+[node name="VFX" type="Node" parent="."]
+
+[node name="Drunk" type="ColorRect" parent="VFX"]
+material = SubResource("ShaderMaterial_f1ej7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.11764706)
+
+[node name="Blur" type="ColorRect" parent="VFX"]
+material = SubResource("ShaderMaterial_qfm1y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.11764706)
+
+[node name="Eyelids" type="Control" parent="VFX"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VFX/Eyelids"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2000
+
+[node name="ColorRect" type="ColorRect" parent="VFX/Eyelids/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VFX/Eyelids/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
 [connection signal="timeout" from="FootstepsTimer" to="." method="_on_footsteps_timer_timeout"]
+[connection signal="animation_finished" from="LadderAnimator/AnimationPlayer" to="LadderAnimator" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="LadderAnimator/Timer" to="LadderAnimator" method="_on_timer_timeout"]

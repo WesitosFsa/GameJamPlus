@@ -1,6 +1,10 @@
 [gd_resource type="Environment" load_steps=3 format=3 uid="uid://d2d3l0vow2ymb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v88ak"]
+sky_top_color = Color(0.0470293, 0.06640587, 0.091736265, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_shpqi"]
 sky_material = SubResource("ProceduralSkyMaterial_v88ak")
@@ -12,6 +16,7 @@ reflected_light_source = 2
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
-volumetric_fog_density = 0.06
-volumetric_fog_albedo = Color(0.7204674, 0.7204675, 0.7204674, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.5378657, 0.79253864, 1, 1)
 adjustment_saturation = 5.49

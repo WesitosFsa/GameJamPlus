@@ -2,8 +2,9 @@ extends Node
 var look_sensitivity : float = 0.1
 var events_on_story : Array[String]
 
-#Interaccion con el gallo
+#FLAGS
 var rooster_already_interacted : bool = false
+var can_start_ladder : bool = true
 
 func add_event_on_story(event : String, callable : Callable = func(): pass):
 	events_on_story.append(event)

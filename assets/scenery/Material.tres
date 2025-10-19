@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bmlm8p67io51y"]
+
+[ext_resource type="Texture2D" uid="uid://fgit2t7c24s1" path="res://assets/scenery/mapa_blueprint_Textura.png" id="1_pbj0m"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_pbj0m")
+roughness = 0.5

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://jobtjotbc5e3"]
+[gd_scene load_steps=7 format=3 uid="uid://jobtjotbc5e3"]
 
 [ext_resource type="Script" uid="uid://cpi0qse3yqgxy" path="res://scripts/perro_sector.gd" id="1_0oa0i"]
+[ext_resource type="AudioStream" uid="uid://dmnt3rj60fu37" path="res://assets/audio/dog/616808__trp__121120-dog-bark-med-distance-noisy-ozzy-toronto.wav" id="2_25xq0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0xbu"]
-size = Vector3(1, 0.7607422, 0.2814331)
+size = Vector3(1, 0.7607422, 0.61434937)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qr1p"]
 size = Vector3(1, 0.8878174, 1)
@@ -19,7 +20,7 @@ script = ExtResource("1_0oa0i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.024725, 1.1343305, -1.045042)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(3.19, 0, 0, 0, 3.19, 0, 0, 0, 3.19, 0, 0, 0.052667618)
+transform = Transform3D(3.19, 0, 0, 0, 3.19, 0, 0, 0, 3.19, 0, 0, -0.47833383)
 shape = SubResource("BoxShape3D_x0xbu")
 debug_color = Color(0, 11.708403, 13.469126, 0.41960785)
 
@@ -30,6 +31,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.115, 0, -0.65)
 transform = Transform3D(2.195, 0, 0, 0, 2.59, 0, 0, 0, 0.47, 0.5337987, 1.1772277, 0.13862038)
 shape = SubResource("BoxShape3D_7qr1p")
 debug_color = Color(0.96706814, 0, 0.4795934, 0.41960785)
+
+[node name="Ladrido" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7248316, 0.38194442, 0)
+stream = ExtResource("2_25xq0")
 
 [node name="Perro" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.46, 0, 0, 0, 0.46, 0, 0, 0, 0.46, -0.7248316, 0.38194442, 0)
@@ -42,7 +47,5 @@ mesh = SubResource("CapsuleMesh_l20p6")
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_b0nem")
 
-[node name="Ladrido" type="AudioStreamPlayer3D" parent="Perro"]
-transform = Transform3D(2.173913, 0, 0, 0, 2.173913, 0, 0, 0, 2.173913, 0, 0, 0)
-
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://biqssy8rlm8im"]
+
+[ext_resource type="Material" uid="uid://cimh6tjj7myq0" path="res://scenes/textures/textures/agua_fuente.tres" id="1_kuay5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kuay5"]
+material = ExtResource("1_kuay5")
+
+[sub_resource type="Curve" id="Curve_hx0yf"]
+_data = [Vector2(0, 0.8977719), 0.0, 0.0, 0, 0, Vector2(0.16233766, 0.7529488), 0.0, 0.0, 0, 0, Vector2(0.39285713, 0.97444296), 0.0, 0.0, 0, 0, Vector2(0.52272725, 0.53145474), 0.0, 0.0, 0, 0, Vector2(0.6980519, 0.98296195), 0.0, 0.0, 0, 0, Vector2(0.9415585, 0.7359108), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[node name="AguaFuente" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 200
+speed_scale = 1.39
+explosiveness = 0.05
+randomness = 1.0
+use_fixed_seed = true
+seed = 2862869133
+mesh = SubResource("SphereMesh_kuay5")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.5
+angle_max = 93.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_hx0yf")
+color = Color(0.76902544, 1.3960153, 2.832, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9659259, -0.25881907, 0, 0.25881907, 0.9659258, 0, 0, 2)

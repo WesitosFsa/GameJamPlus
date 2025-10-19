@@ -1,9 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://biqssy8rlm8im"]
 
-[ext_resource type="Material" uid="uid://cimh6tjj7myq0" path="res://scenes/textures/textures/agua_fuente.tres" id="1_kuay5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx0yf"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.2713271, 0.9136211, 0.9999998, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_kuay5"]
-material = ExtResource("1_kuay5")
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kuay5"]
+material = SubResource("StandardMaterial3D_hx0yf")
+radius = 0.225
+height = 1.35
+radial_segments = 4
+rings = 0
 
 [sub_resource type="Curve" id="Curve_hx0yf"]
 _data = [Vector2(0, 0.8977719), 0.0, 0.0, 0, 0, Vector2(0.16233766, 0.7529488), 0.0, 0.0, 0, 0, Vector2(0.39285713, 0.97444296), 0.0, 0.0, 0, 0, Vector2(0.52272725, 0.53145474), 0.0, 0.0, 0, 0, Vector2(0.6980519, 0.98296195), 0.0, 0.0, 0, 0, Vector2(0.9415585, 0.7359108), 0.0, 0.0, 0, 0]
@@ -18,7 +25,8 @@ explosiveness = 0.05
 randomness = 1.0
 use_fixed_seed = true
 seed = 2862869133
-mesh = SubResource("SphereMesh_kuay5")
+mesh = SubResource("CapsuleMesh_kuay5")
+particle_flag_rotate_y = true
 direction = Vector3(0, 1, 0)
 spread = 15.0
 initial_velocity_min = 3.0

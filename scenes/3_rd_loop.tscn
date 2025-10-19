@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cifegjasydong"]
+
+[ext_resource type="Script" uid="uid://dq5f2q4yoishv" path="res://scripts/3_rd_loop.gd" id="1_3ynt0"]
+[ext_resource type="Script" uid="uid://ccwugekq5oj8r" path="res://scripts/door_lock.gd" id="2_hai3a"]
+[ext_resource type="AudioStream" uid="uid://c0cfrm6d1wt6e" path="res://assets/audio/locked_door.mp3" id="3_5vml3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5dly"]
+size = Vector3(2.198578, 2.5878906, 1)
+
+[node name="3rdLoop" type="Node"]
+script = ExtResource("1_3ynt0")
+
+[node name="door_lock" type="StaticBody3D" parent="." groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7188687, 2.6540923, -13.428943)
+script = ExtResource("2_hai3a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3465652, -0.72391415, 2.1809874)
+shape = SubResource("BoxShape3D_h5dly")
+debug_color = Color(0, 0.60784316, 0.32941177, 1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="door_lock"]
+stream = ExtResource("3_5vml3")
+bus = &"LowReverb"

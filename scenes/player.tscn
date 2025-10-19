@@ -17,10 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://be5dkcy8q3430" path="res://assets/audio/footsteps/NoPiedra2.mp3" id="11_jej6c"]
 [ext_resource type="AudioStream" uid="uid://bk3fk3ugl8hlf" path="res://assets/audio/footsteps/NoPiedra3.mp3" id="12_f1ej7"]
 [ext_resource type="Shader" uid="uid://b5rlj4mv163tq" path="res://shaders/drunk.gdshader" id="13_jej6c"]
-[ext_resource type="AudioStream" uid="uid://byryj60mmoav4" path="res://assets/audio/Acuchillar.mp3" id="13_oprun"]
 [ext_resource type="Script" uid="uid://c0oqrebl073af" path="res://scripts/hint.tres.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://cp7shmpkhmed4" path="res://scripts/ladder_animator.gd" id="15_qfm1y"]
 [ext_resource type="Shader" uid="uid://cdfto5l4r871g" path="res://shaders/blur.gdshader" id="16_a8ls1"]
+[ext_resource type="AudioStream" uid="uid://dutxbpnlbjp7f" path="res://audio_streams/puteada.tres" id="17_i4ail"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_f1ej7"]
 frustum_focal_length = 12.0
@@ -176,7 +176,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Voz" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("13_oprun")
+stream = ExtResource("17_i4ail")
 
 [node name="LayerAudioPlayer" type="AudioStreamPlayer3D" parent="." groups=["layer_audio_player"]]
 

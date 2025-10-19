@@ -5,12 +5,15 @@ extends Node
 @onready var blur: ColorRect = $"../VFX/Blur"
 @onready var eyelids: Control = $"../VFX/Eyelids"
 
+signal animation_executed
+
 func _on_tween_callback():
 	var tween2 : Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween2.tween_property(player, "rotation_degrees", Vector3(-90, player.rotation_degrees.y, player.rotation_degrees.z), 1)
-	player.desactivate
-
+	player.desactivate()
+	
 	tween2.tween_callback(func(): player.position = Vector3(4.46, 1.862, -3.389); $Timer.start())
+	animation_executed.emit()
 
 func ladder():
 	$AnimationPlayer.play("ladder")

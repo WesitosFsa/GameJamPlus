@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhvxvhkbl063f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6gg0"]
+albedo_color = Color(0.7294118, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vq4dj"]
+material = SubResource("StandardMaterial3D_a6gg0")
+radius = 0.05
+height = 0.2
+
+[sub_resource type="Curve" id="Curve_h1psf"]
+_data = [Vector2(0.37785017, 0.79057753), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="Sangre" type="Node3D"]
+
+[node name="EfectoSangre" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 200
+lifetime = 0.3
+one_shot = true
+speed_scale = 0.65
+explosiveness = 0.03
+randomness = 0.03
+lifetime_randomness = 0.03
+mesh = SubResource("SphereMesh_vq4dj")
+direction = Vector3(8, 2, 0)
+spread = 35.0
+initial_velocity_min = 1.5
+initial_velocity_max = 1.5
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_h1psf")
+color = Color(0.4695654, 0, 0.031362068, 1)

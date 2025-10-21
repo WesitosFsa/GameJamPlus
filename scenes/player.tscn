@@ -101,6 +101,7 @@ albedo_color = Color(0.12050886, 0, 0.70700896, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i4ail"]
 radius = 0.007
+height = 0.1
 radial_segments = 4
 rings = 1
 
@@ -117,7 +118,7 @@ shader = ExtResource("16_a8ls1")
 shader_parameter/offset = 0.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, -4.371138e-08, 0.9999998, 0, -0.9999998, -4.371138e-08, 0, 0.8527156, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0.8527156, 0)
 script = ExtResource("1_3vyb7")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -212,7 +213,7 @@ one_shot = true
 [node name="GPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 15.861253, 1.9999996)
 material_override = SubResource("StandardMaterial3D_i4ail")
-amount = 500
+amount = 1000
 draw_order = 2
 mesh = SubResource("CapsuleMesh_i4ail")
 emission_shape = 3

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bdbevmkoj8bny" path="res://scripts/meche_trigger.gd" id="2_se2ww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qr1p"]
-size = Vector3(4.303711, 3.0419922, 4.3048096)
+size = Vector3(4.5042725, 3.0419922, 4.3048096)
 
 [node name="4th_loop" type="Node"]
 script = ExtResource("1_41ava")
@@ -14,7 +14,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4518666, 0.8504412, -22.86
 script = ExtResource("2_se2ww")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="meche_trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3461914, 1.0209961, 0.93917847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2459106, 1.0209961, 0.93917847)
 shape = SubResource("BoxShape3D_7qr1p")
 debug_color = Color(0.27236834, 1.6360875, 5.2198143e-06, 1)
 debug_fill = false

@@ -22,7 +22,6 @@ func mouse_interaction():
 		GLOBAL.rooster_already_interacted = true
 
 func _on_player_voz_finished():
-	print("Entroo")
 	$".."._return_to_original()
 	first_loop = false
 	player.get_node("Voz").disconnect("finished", _on_player_voz_finished)

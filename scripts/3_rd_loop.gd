@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _on_rooster_interact():
 	var player_voice : AudioStreamPlayer3D = player.get_node("Voz")
-	#player_voice.stream = load("") #TODO CARGAR SUSTO
+	player_voice.stream = load("res://assets/audio/voice/pre-scare.mp3")
 	
 	player_voice.play()
 	

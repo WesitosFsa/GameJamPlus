@@ -8,11 +8,13 @@ func _ready() -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		ladrido.play()
+		$Perro_Anim_002_Actions/AnimationPlayer.play("Perro_salida", -1, 1)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Player:
 		ladrido.stop()
+		$Perro_Anim_002_Actions/AnimationPlayer.play("Perro_salida", -1, -1)
 
 func desactivate():
 	$Pared.collision_layer = 0b00
